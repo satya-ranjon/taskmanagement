@@ -1,10 +1,12 @@
 import React from "react";
 import HeroSection from "./HeroSection";
 import Navbar from "../../components/Navbar";
+import Benefits from "./Benefits";
 
 const Home: React.FC = () => {
   return (
     <div>
+      {/* Navbar & Hero Section  */}
       <div className=" relative">
         <div className="flex flex-col md:flex-row  justify-between">
           <div className="md:w-8/12 h-[580px] md:h-[80vh] lg:h-[90vh] xl:h-[100vh]"></div>
@@ -17,6 +19,9 @@ const Home: React.FC = () => {
           </div>
         </div>
       </div>
+      {/* Benefits Section  */}
+      <Benefits />
+      <div className=" h-screen"></div>
     </div>
   );
 };
