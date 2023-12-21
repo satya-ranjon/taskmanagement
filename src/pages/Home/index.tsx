@@ -2,6 +2,7 @@ import React from "react";
 import HeroSection from "./HeroSection";
 import Navbar from "../../components/Navbar";
 import Benefits from "./Benefits";
+import Reviews from "./Reviews";
 
 const Home: React.FC = () => {
   return (
@@ -21,6 +22,7 @@ const Home: React.FC = () => {
       </div>
       {/* Benefits Section  */}
       <Benefits />
+      <Reviews />
       <div className=" h-screen"></div>
     </div>
   );

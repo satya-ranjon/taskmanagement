@@ -60,6 +60,7 @@ const Benefits: React.FC = () => {
                     animate="visible"
                     exit="hidden"
                     variants={modalVariants}
+                    key={item.id}
                     className="text-zinc-500">
                     <div className=" flex flex-col md:flex-row justify-start items-start gap-4 px-4 pr-8 py-6 border-2  rounded-lg">
                       <video
