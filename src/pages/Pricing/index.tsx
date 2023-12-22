@@ -6,15 +6,17 @@ import { FaCheck } from "react-icons/fa6";
 
 const Pricing: React.FC = () => {
   return (
-    <div className=" py-24 bg-[#f5f3ff] ">
+    <div className=" py-24 bg-[#f5f3ff57] ">
       <Container>
-        <SectionTitle>Pricing Made Easy</SectionTitle>
+        <SectionTitle>
+          <span className=" text-primary">Pricing</span> Made Easy
+        </SectionTitle>
         <div className=" grid grid-cols-1 md:grid-cols-3 gap-5 xl:gap-16 mt-8 md:mt-24">
           {pricing.map((item) => (
             <div
               key={item.name}
               className=" p-5 lg:p-10 rounded-md border-2 border-secondary">
-              <div className=" pb-4 border-b-2 ">
+              <div className=" pb-4 border-b-2 border-b-red-100 ">
                 <h1 className=" text-xl lg:text-3xl font-semibold uppercase">
                   {item.name}
                 </h1>
@@ -30,8 +32,8 @@ const Pricing: React.FC = () => {
                 {item.features.map((feature, index) => (
                   <h5
                     key={index}
-                    className=" flex justify-start items-center gap-2">
-                    <FaCheck /> <span>{feature}</span>
+                    className=" flex justify-start items-center gap-2 text-zinc-600">
+                    <FaCheck className=" text-primary" /> <span>{feature}</span>
                   </h5>
                 ))}
               </div>

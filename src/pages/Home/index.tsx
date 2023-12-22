@@ -4,6 +4,7 @@ import Navbar from "../../components/Navbar";
 import Benefits from "./Benefits";
 import Reviews from "./Reviews";
 import Pricing from "../Pricing";
+import Features from "../Features";
 
 const Home: React.FC = () => {
   return (
@@ -23,9 +24,12 @@ const Home: React.FC = () => {
       </div>
       {/* Benefits Section  */}
       <Benefits />
+      {/* Features Section  */}
+      <Features />
+      {/* Pricing Section  */}
       <Pricing />
+      {/* Reviews Section  */}
       <Reviews />
-      <div className=" h-screen">P</div>
     </div>
   );
 };

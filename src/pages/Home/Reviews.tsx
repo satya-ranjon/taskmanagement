@@ -40,7 +40,9 @@ const Reviews: React.FC = () => {
   return (
     <div className=" bg-[#f9f9fb] py-28">
       <Container>
-        <SectionTitle>What Our User Says</SectionTitle>
+        <SectionTitle>
+          What Our <span className=" text-primary">User</span> Says
+        </SectionTitle>
         <div className="mt-10 md:mt-24">
           <Slider {...settings}>
             {reviews?.map((item, index) => (
