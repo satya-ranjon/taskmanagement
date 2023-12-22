@@ -3,6 +3,7 @@ import HeroSection from "./HeroSection";
 import Navbar from "../../components/Navbar";
 import Benefits from "./Benefits";
 import Reviews from "./Reviews";
+import Pricing from "../Pricing";
 
 const Home: React.FC = () => {
   return (
@@ -22,8 +23,9 @@ const Home: React.FC = () => {
       </div>
       {/* Benefits Section  */}
       <Benefits />
+      <Pricing />
       <Reviews />
-      <div className=" h-screen"></div>
+      <div className=" h-screen">P</div>
     </div>
   );
 };

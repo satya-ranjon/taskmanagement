@@ -52,8 +52,8 @@ const Navbar: React.FC = () => {
           </div>
 
           {/* Desktop menu  */}
-          <div className="w-full hidden lg:flex justify-between items-center ">
-            <div className="flex justify-start gap-8 items-center ">
+          <div className="w-full hidden lg:flex justify-between items-center text-lg ">
+            <div className="flex justify-start gap-8 items-center  ">
               {menu.map((item) => (
                 <NavLink
                   className={({ isActive }) => (isActive ? "text-primary" : "")}

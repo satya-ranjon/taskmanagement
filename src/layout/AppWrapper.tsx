@@ -1,11 +1,12 @@
 import React from "react";
-import { Outlet } from "react-router-dom";
+import { Outlet, useLocation } from "react-router-dom";
 import Navbar from "../components/Navbar";
 
 const AppWrapper: React.FC = () => {
+  const { pathname } = useLocation();
   return (
-    <div>
-      <Navbar />
+    <div className=" font-inter">
+      {pathname !== "/" && <Navbar />}
       <Outlet />
     </div>
   );
