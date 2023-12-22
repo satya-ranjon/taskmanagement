@@ -8,6 +8,9 @@ import plus from "../assets/plus.png";
 import time from "../assets/time.png";
 import progress from "../assets/progress-report.png";
 import login from "../assets/login.png";
+import auth1 from "../assets/auth1.png";
+import auth2 from "../assets/auth2.png";
+import auth3 from "../assets/auth3.png";
 
 const images = {
   Logo,
@@ -20,6 +23,9 @@ const images = {
   time,
   progress,
   login,
+  auth1,
+  auth2,
+  auth3,
 };
 
 export default images;

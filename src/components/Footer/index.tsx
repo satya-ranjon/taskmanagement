@@ -57,8 +57,10 @@ const Footer: React.FC = () => {
             <FaFacebookF />
           </div>
           <div className=" flex justify-start items-center gap-5 text-lg font-semibold ">
-            {menu.map((item) => (
-              <Link to={item.link}>{item.label}</Link>
+            {menu.map((item, index) => (
+              <Link key={index} to={item.link}>
+                {item.label}
+              </Link>
             ))}
           </div>
         </div>
