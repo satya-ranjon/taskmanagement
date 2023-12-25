@@ -12,6 +12,8 @@ import Event from "../pages/Dashboard/Event";
 import Profile from "../pages/Dashboard/Profile";
 import { DndProvider } from "react-dnd";
 import { HTML5Backend } from "react-dnd-html5-backend";
+import TaskView from "../pages/Dashboard/Todo/TaskView";
+import UpdateTask from "../pages/Dashboard/Todo/UpdateTask";
 
 const routes = createBrowserRouter([
   {
@@ -53,6 +55,8 @@ const routes = createBrowserRouter([
           </DndProvider>
         ),
       },
+      { path: "todo/:id", element: <TaskView /> },
+      { path: "todo/edit/:id", element: <UpdateTask /> },
       { path: "event", element: <Event /> },
       { path: "profile", element: <Profile /> },
     ],

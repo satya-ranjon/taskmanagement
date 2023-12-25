@@ -20,7 +20,7 @@ const statusOption = [
   { value: "ongoing", label: "Ongoing" },
   { value: "completed", label: "Completed" },
 ];
-const CreateTask: React.FC = () => {
+const CreateTask: React.FC = ({ setIsOpen, setData }) => {
   const [title, setTitle] = useState<string>("");
   const [description, setDescription] = useState<string>("");
   const [deadline, setDeadline] = useState<Date>(new Date());
@@ -49,8 +49,10 @@ const CreateTask: React.FC = () => {
     axios
       .post(`${import.meta.env.VITE_SERVER_URL}/task`, newTask)
       .then(function (response) {
-        if (response.data.acknowledged) {
+        if (response.data._id) {
           toast.success("Task Create Successfully !");
+          setData((prev) => [...prev, response.data]);
+          setIsOpen(false);
         }
       })
       .catch(function (error) {

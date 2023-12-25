@@ -6,6 +6,7 @@ import { useDrag } from "react-dnd";
 import { MdDelete } from "react-icons/md";
 import axios from "axios";
 import { toast } from "react-toastify";
+import { Link } from "react-router-dom";
 
 const statusOption = [
   { value: "todo", label: "To Do" },
@@ -53,14 +54,16 @@ const SingleTask: React.FC = ({
         isDragging && "opacity-30 bg-red-700 "
       }`}>
       <div className="flex justify-between items-start">
-        <h1 className="cursor-pointer text-xl lg:text-2xl font-bold text-zinc-700 ">
+        <Link
+          to={`/dashboard/todo/${task._id}`}
+          className="cursor-pointer text-xl lg:text-2xl font-bold text-zinc-700 ">
           {task?.title?.slice(
             0,
             windowWidth > 1025 ? 37 : windowWidth > 769 ? 20 : 15
           )}
           {task?.title?.length >
             (windowWidth > 1025 ? 37 : windowWidth > 769 ? 20 : 15) && " ..."}
-        </h1>
+        </Link>
         <div className="relative">
           <button onClick={() => setOpenStatusModal({ taskId: task?._id })}>
             <BsThreeDotsVertical className="text-xl cursor-pointer lg:text-2xl xl:text-3xl text-zinc-600 mt-1" />

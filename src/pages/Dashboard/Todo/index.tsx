@@ -99,7 +99,7 @@ const Todo: React.FC = () => {
 
       {/* Modal  */}
       <Modal isOpen={isOpen} onClose={() => setIsOpen(false)}>
-        <CreateTask />
+        <CreateTask setIsOpen={setIsOpen} setData={setData} />
       </Modal>
     </div>
   );

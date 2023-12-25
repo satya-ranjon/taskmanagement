@@ -53,7 +53,9 @@ const Navbar: React.FC = () => {
                   ) : (
                     <>
                       <NavLink to="/login"> Login</NavLink>
-                      <Button> Let’s Explore</Button>
+                      <Link to="/dashboard/todo">
+                        <Button> Let’s Explore</Button>
+                      </Link>
                     </>
                   )}
                 </div>
@@ -80,7 +82,9 @@ const Navbar: React.FC = () => {
             ) : (
               <div className=" flex justify-start gap-8 items-center">
                 <NavLink to="/login"> Login</NavLink>
-                <Button> Let’s Explore</Button>
+                <Link to="/dashboard/todo">
+                  <Button> Let’s Explore</Button>
+                </Link>
               </div>
             )}
           </div>
