@@ -1,5 +1,4 @@
-import React, { ReactNode } from "react";
-import { Link } from "react-router-dom";
+import React, { ReactNode, ButtonHTMLAttributes } from "react";
 
 export enum ButtonSize {
   SM = "sm",
@@ -7,29 +6,25 @@ export enum ButtonSize {
   LG = "lg",
 }
 
-interface ButtonProps {
+interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
   children: ReactNode;
-  url?: string;
   size?: ButtonSize;
+  onClick?: () => void;
 }
 
 const Button: React.FC<ButtonProps> = ({
+  onClick,
   children,
-  url,
   size = ButtonSize.MD,
 }) => {
-  return url ? (
-    <Link
-      to={url}
-      className="px-3 py-2 bg-zinc-900 text-zinc-200 rounded-md font-semibold text-base">
-      {children}
-    </Link>
-  ) : (
+  return (
     <button
+      onClick={onClick}
       className={`
-      ${size === ButtonSize.MD && "px-3 text-base"}
-      ${size === ButtonSize.LG && "px-5 text-lg"}
-      py-2 bg-zinc-900 text-zinc-200 rounded-md font-semibold `}>
+      ${size === ButtonSize.SM && "px-2 py-1 text-base"}
+      ${size === ButtonSize.MD && "px-3 py-2 text-base"}
+      ${size === ButtonSize.LG && "px-5 py-2 text-lg "}
+       bg-zinc-900 text-zinc-200 rounded-md font-semibold `}>
       {children}
     </button>
   );

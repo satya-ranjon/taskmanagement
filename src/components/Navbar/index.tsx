@@ -1,19 +1,21 @@
 import React, { useState } from "react";
 import Container from "../common/Container";
 import Logo from "../common/Logo";
-import { NavLink } from "react-router-dom";
+import { Link, NavLink } from "react-router-dom";
 import Button from "../common/Button";
 import { IoMdMenu, IoMdClose } from "react-icons/io";
+import useAuthentication from "../../hooks/useAuthentication";
 
 const menu = [
   { label: "Home", link: "/" },
   { label: "Features", link: "/features" },
   { label: "Pricing", link: "/pricing" },
-  { label: "Contact", link: "/contact" },
 ];
 
 const Navbar: React.FC = () => {
   const [isOpen, setIsOpen] = useState<boolean>(false);
+  const { user } = useAuthentication();
+
   return (
     <div className="py-8 font-medium text-zinc-600">
       <Container>
@@ -44,8 +46,16 @@ const Navbar: React.FC = () => {
                       {item.label}
                     </NavLink>
                   ))}
-                  <NavLink to="/login"> Login</NavLink>
-                  <Button> Let’s Explore</Button>
+                  {user.email ? (
+                    <Link to="/dashboard/todo">
+                      <Button> Dashboard</Button>
+                    </Link>
+                  ) : (
+                    <>
+                      <NavLink to="/login"> Login</NavLink>
+                      <Button> Let’s Explore</Button>
+                    </>
+                  )}
                 </div>
               </div>
             )}
@@ -63,10 +73,16 @@ const Navbar: React.FC = () => {
                 </NavLink>
               ))}
             </div>
-            <div className=" flex justify-start gap-8 items-center">
-              <NavLink to="/login"> Login</NavLink>
-              <Button> Let’s Explore</Button>
-            </div>
+            {user.email ? (
+              <Link to="/dashboard/todo">
+                <Button> Dashboard</Button>
+              </Link>
+            ) : (
+              <div className=" flex justify-start gap-8 items-center">
+                <NavLink to="/login"> Login</NavLink>
+                <Button> Let’s Explore</Button>
+              </div>
+            )}
           </div>
         </div>
       </Container>

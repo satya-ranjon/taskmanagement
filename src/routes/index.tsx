@@ -6,6 +6,12 @@ import Features from "../pages/Features";
 import Pricing from "../pages/Pricing";
 import Login from "../pages/Login";
 import Register from "../pages/Register";
+import Todo from "../pages/Dashboard/Todo";
+import DashboardWrapper from "../layout/DashboardWrapper";
+import Event from "../pages/Dashboard/Event";
+import Profile from "../pages/Dashboard/Profile";
+import { DndProvider } from "react-dnd";
+import { HTML5Backend } from "react-dnd-html5-backend";
 
 const routes = createBrowserRouter([
   {
@@ -33,6 +39,22 @@ const routes = createBrowserRouter([
         path: "/register",
         element: <Register />,
       },
+    ],
+  },
+  {
+    path: "dashboard",
+    element: <DashboardWrapper />,
+    children: [
+      {
+        path: "todo",
+        element: (
+          <DndProvider backend={HTML5Backend}>
+            <Todo />
+          </DndProvider>
+        ),
+      },
+      { path: "event", element: <Event /> },
+      { path: "profile", element: <Profile /> },
     ],
   },
 ]);

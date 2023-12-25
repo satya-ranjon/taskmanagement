@@ -1,16 +1,16 @@
 import React from "react";
-import { Link, useNavigate } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import { AiOutlineMail } from "react-icons/ai";
 import { RiLockPasswordLine } from "react-icons/ri";
 import Button from "../../components/common/Button";
 import AuthWrapper from "../../layout/AuthWrapper";
 import useAuthentication from "../../hooks/useAuthentication";
-import { User } from "../../context/AuthProvider";
 import { toast } from "react-toastify";
 
 const Register: React.FC = () => {
-  const { registration } = useAuthentication();
+  const { registration, updateUserProfile } = useAuthentication();
 
+  const { state } = useLocation();
   const navigate = useNavigate();
 
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
@@ -20,13 +20,23 @@ const Register: React.FC = () => {
     const email = form.email.value;
     const password = form.password.value;
 
-    registration(email, password).then((result: { user: User }) => {
-      const user = result.user;
-      console.log(user);
-      toast.success("User Login Successful!");
-
-      navigate(from, { replace: true });
-    });
+    registration(email, password)
+      .then((result) => {
+        updateUserProfile(
+          name,
+          "https://res.cloudinary.com/dcpbu1ffy/image/upload/v1703339933/profile_pfd2ib.png"
+        )
+          .then((res) => {
+            toast.success("Register Successfully Complete");
+            navigate(state ? state : "/dashboard/todo");
+          })
+          .catch((error) => {
+            console.log("error", error.message);
+          });
+      })
+      .catch((error) => {
+        toast.error(error.code);
+      });
   };
 
   return (

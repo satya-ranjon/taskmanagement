@@ -9,7 +9,6 @@ const menu = [
   { label: "Home", link: "/" },
   { label: "Features", link: "/features" },
   { label: "Pricing", link: "/pricing" },
-  { label: "Contact", link: "/contact" },
 ];
 
 const Footer: React.FC = () => {

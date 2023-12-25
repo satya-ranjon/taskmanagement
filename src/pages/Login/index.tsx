@@ -6,13 +6,12 @@ import Button from "../../components/common/Button";
 import AuthWrapper from "../../layout/AuthWrapper";
 import { toast } from "react-toastify";
 import useAuthentication from "../../hooks/useAuthentication";
-import { User } from "../../context/AuthProvider";
 
 const Login: React.FC = () => {
-  const { login, loading } = useAuthentication();
+  const { login } = useAuthentication();
   const navigate = useNavigate();
   const location = useLocation();
-  const from = location.state?.from?.pathname || "/";
+  const from = location.state?.from?.pathname || "/dashboard/todo";
 
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
@@ -20,13 +19,14 @@ const Login: React.FC = () => {
     const email = form.email.value;
     const password = form.password.value;
 
-    login(email, password).then((result: { user: User }) => {
-      const user = result.user;
-      console.log(user);
-      toast.success("User Login Successful!");
-
-      navigate(from, { replace: true });
-    });
+    login(email, password)
+      .then((result) => {
+        toast.success("User Login Successful!");
+        navigate(from, { replace: true });
+      })
+      .catch((error) => {
+        toast.error(error.code);
+      });
   };
 
   return (

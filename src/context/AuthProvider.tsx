@@ -6,6 +6,8 @@ import {
   signOut,
   updateProfile,
   UserCredential,
+  signInWithPopup,
+  GoogleAuthProvider,
 } from "firebase/auth";
 
 import auth from "../firebase/firebaseConfig";
@@ -24,6 +26,7 @@ export interface User {
 }
 
 export interface AuthContextType {
+  loginGoogle: () => Promise<void>;
   logoutUser: () => Promise<void>;
   user: User;
   userId: string | null;
@@ -35,24 +38,30 @@ export interface AuthContextType {
 
 export const AuthContext = createContext<AuthContextType | null>(null);
 
+const googleProvider = new GoogleAuthProvider();
+
 const AuthProvider: React.FC<AuthProviderProps> = ({ children }) => {
   const [user, setUser] = useState<User>({});
   const [userId, setUserId] = useState<string | null>(null);
   const [loading, setLoading] = useState(true);
 
-  const login = (email: string, password: string) => {
+  const login = async (email: string, password: string) => {
     return signInWithEmailAndPassword(auth, email, password);
   };
 
-  const registration = (email: string, password: string) => {
+  const registration = async (email: string, password: string) => {
     return createUserWithEmailAndPassword(auth, email, password);
+  };
+
+  const loginGoogle = async () => {
+    return signInWithPopup(auth, googleProvider);
   };
 
   const logoutUser = () => {
     return signOut(auth);
   };
 
-  const updateUserProfile = (name: string, photo: string) => {
+  const updateUserProfile = async (name: string, photo: string) => {
     return updateProfile(auth.currentUser!, {
       displayName: name,
       photoURL: photo,
@@ -73,6 +82,7 @@ const AuthProvider: React.FC<AuthProviderProps> = ({ children }) => {
   return (
     <AuthContext.Provider
       value={{
+        loginGoogle,
         logoutUser,
         user,
         userId,

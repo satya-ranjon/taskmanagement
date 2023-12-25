@@ -3,6 +3,7 @@ import Container from "../../components/common/Container";
 import { images } from "../../constant";
 import Button, { ButtonSize } from "../../components/common/Button";
 import { SiNotion, SiJira, SiSlack, SiDropbox } from "react-icons/si";
+import { Link } from "react-router-dom";
 
 const HeroSection: React.FC = () => {
   return (
@@ -19,7 +20,9 @@ const HeroSection: React.FC = () => {
               overworking your team
             </h4>
             <div className=" w-fit">
-              <Button size={ButtonSize.LG}>Let’s Explore</Button>
+              <Link to="/dashboard/todo">
+                <Button size={ButtonSize.LG}>Let’s Explore</Button>
+              </Link>
             </div>
             <div className="flex flex-col gap-3">
               <h1 className=" font-semibold text-zinc-600">
